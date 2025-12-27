@@ -33,7 +33,7 @@ const colorPalette = [
     "#000000", // Black
 ];
 
-const evil = "rgb(64, 14, 230)"
+const nums = "64, 14, 230"
 
 function SettingsColourPicker({ name, description, settingName, suggestedColors }: { name: string, description: string, settingName: string, suggestedColors: string[]; }) {
     function onChange(color: number) {
@@ -79,12 +79,18 @@ let observer: MutationObserver | null = null;
 
 function applyColor(root: ParentNode = document) {
     const elements = root.querySelectorAll<HTMLElement>(
-        `.c19a557985eb7793-username, ._703b91fc872193e8-nameContainer`
+        `.c19a557985eb7793-username, ._703b91fc872193e8-nameContainer, .vc-typing-user, .f61d60ed65f9a128-wrapper, .mention, ._752971923a1e6683-roleMention, ._07f9193042954787-usernameFont, ._07f9193042954787-username, ._4bd5201c86a2042b-defaultColor, .b8880176888cc928-text`
     );
 
     for (const el of elements) {
-        if (el.style.color == evil) {
-            el.style.color = "#" + settings.store.overrideColour;
+        const comp = getComputedStyle(el)
+
+        if (comp.color.includes(nums)) {
+            el.style.setProperty("color", "#" + settings.store.overrideColour, "important")
+        }
+
+        if (comp.backgroundColor.includes(nums)) {
+            el.style.setProperty("background-color", "#" + settings.store.overrideColour + "22", "important") // transparency for pings background
         }
     }
 }
@@ -109,7 +115,8 @@ export default definePlugin({
 
         observer.observe(document.body, {
             childList: true,
-            subtree: true
+            subtree: true,
+            attributes: true
         });
     },
 
