@@ -28,7 +28,7 @@ export function ColourPicker() {
             <div className={cl("container")}>
                 <div className={cl("settings-labels")}>
                     <Forms.FormTitle tag="h3">New Colour</Forms.FormTitle>
-                    <Forms.FormText>new colour thing (ctrl+r/cmd+r/reload/re-open discord to apply</Forms.FormText>
+                    <Forms.FormText>new colour thing (ctrl+r/cmd+r/reload/re-open discord to apply)</Forms.FormText>
                 </div>
 
                 <ColorPicker // woah it's a colour picker!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
