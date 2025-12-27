@@ -11,7 +11,7 @@ import definePlugin, { OptionType } from "@utils/types";
 import { classNameFactory } from "@api/Styles";
 import { ColorPicker, Forms } from "@webpack/common";
 
-const cl = classNameFactory("vc-funnyplugin-");
+const cl = classNameFactory("vc-evilPurpleBlocker-");
 
 const targetOne = "c19a557985eb7793-username"
 const targetTwo = "_703b91fc872193e8-nameContainer"
