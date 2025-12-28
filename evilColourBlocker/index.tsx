@@ -38,6 +38,7 @@ const nums = "64, 14, 230"
 function SettingsColourPicker({ name, description, settingName, suggestedColors }: { name: string, description: string, settingName: string, suggestedColors: string[]; }) {
     function onChange(color: number) {
         settings.store[settingName] = color.toString(16).padStart(6, "0");
+        applyColor();
     }
 
     return (
@@ -108,7 +109,7 @@ export default definePlugin({
             for (const mutation of mutations) {
                 for (const node of mutation.addedNodes) {
                     if (!(node instanceof HTMLElement)) continue;
-                    applyColor(node);
+                    setTimeout(() => applyColor(), 0.001);
                 }
             }
         });
