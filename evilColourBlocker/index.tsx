@@ -96,11 +96,13 @@ function applyColor(root: ParentNode = document) {
     }
 }
 
+let requiresRestart = true;
 export default definePlugin({
     name: "EvilColourBlocker",
     description: "blocks colours and replaces them",
     authors: [{ name: "arlocomotive", id: 772797877118435358n }, { name: "sunnyflops", id: 961709273946161192n }],
     settings,
+    requiresRestart,
 
     start() {
         applyColor();

@@ -46,10 +46,12 @@ function boredify(root: ParentNode = document) {
 }
 
 // totally not reused from the evil colour plugin :)
+let requiresRestart = true;
 export default definePlugin({
     name: "BoredIsAI",
     description: "replaces all instances of 'ai' with ':bored:'",
     authors: [{ name: "sunnyflops", id: 961709273946161192n }],
+    requiresRestart,
 
     start() {
         boredify();

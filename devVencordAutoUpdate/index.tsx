@@ -21,11 +21,13 @@ const settings = definePluginSettings({
     }
 });
 
+let requiresRestart = true;
 export default definePlugin({
     name: "DevVencordUpdater",
     description: "checks for updates on vencord github and updates development builds",
     authors: [{ name: "sunnyflops", id: 961709273946161192n }],
     settings,
+    requiresRestart,
 
     async checkUpdates() {
         if (!commandHelper) {
