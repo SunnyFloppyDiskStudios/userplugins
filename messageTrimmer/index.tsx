@@ -16,6 +16,7 @@ const letters = "qwertyuiopasdfghjklzxcvbnm1234567890,.!?¿¿¿¿¿"
 const lettersAsList = letters.split(",");
 
 const beginRegex = /^[A-Za-z]?!/
+const emojiRegex = /\p{Extended_Pictographic}/u;
 
 const settings = definePluginSettings({
     trimAmount: {
@@ -48,7 +49,10 @@ export default definePlugin({
                 const trimAmount = Number(settings.store.trimAmount);
 
                 if (trimAmount > 0) {
-                    if (!(message.content.endsWith(">") || message.content.endsWith(":") || beginRegex.test(message.content))) {
+                    const segments = [...new Intl.Segmenter().segment(message.content)]
+                    const lastSegment = segments[segments.length - 1]?.segment;
+
+                    if (!(message.content.endsWith(">") || message.content.endsWith(":") || beginRegex.test(message.content) || emojiRegex.test(message.content))) {
                         message.content = message.content.slice(0, -trimAmount);
 
                         if (message.content === "") {
